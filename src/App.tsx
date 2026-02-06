@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-
+import {Dices, Trash2, Palette, Play, StepForward} from 'lucide-react'
 
 const GameOfLife: React.FC = () => {
   const numRows = 50;
@@ -141,9 +141,9 @@ const GameOfLife: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-linear-to-br from-gray-900 via-purple-900 to-gray-900 p-8">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-linear-to-br from-blue-500 via-slate-900 to-gray-900 p-8">
       <div className="mb-6 text-center">
-        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-purple-400 mb-2">
+        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-linear-to-r from-cyan-400 to-blue-400 mb-2">
           Conway's Game of Life
         </h1>
         <p className="text-cyan-300 text-lg">Generation: {generation}</p>
@@ -208,38 +208,38 @@ const GameOfLife: React.FC = () => {
         <button
           onClick={step}
           disabled={running}
-          className="px-6 py-3 rounded-lg font-semibold text-white transition-all shadow-lg disabled:opacity-50"
+          className=" flex px-6 py-3 rounded-lg font-semibold text-white transition-all shadow-lg disabled:opacity-50"
           style={{
             background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
           }}
           onMouseEnter={(e) => !running && (e.currentTarget.style.transform = 'scale(1.05)')}
           onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
         >
-          ⏭ Step
+          <StepForward size={20}/> Step
         </button>
 
         <button
           onClick={randomize}
-          className="px-6 py-3 rounded-lg font-semibold text-white transition-all shadow-lg"
+          className="px-6 py-3 rounded-lg font-semibold text-white transition-all shadow-lg flex"
           style={{
             background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
           onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
         >
-          🎲 Random
+          <Dices size={20}/> Random
         </button>
 
         <button
           onClick={clear}
-          className="px-6 py-3 rounded-lg font-semibold text-white transition-all shadow-lg"
+          className="px-6 py-3 rounded-lg font-semibold text-white transition-all shadow-lg flex"
           style={{
             background: 'linear-gradient(135deg, #64748b, #475569)',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
           onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
         >
-          🗑 Clear
+          <Trash2 size={20}/> Clear
         </button>
 
         <button
