@@ -1,73 +1,50 @@
-# React + TypeScript + Vite
+# React Game of Life
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## What is Conway's Game of Life?
 
-Currently, two official plugins are available:
+Conway's Game of Life is a cellular automaton devised by mathematician John Conway. It consists of a grid of cells, each of which can be alive or dead. The game evolves in discrete steps, with the state of each cell determined by a set of simple rules based on its neighbors:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Survival:** A living cell with 2 or 3 living neighbors stays alive.
+2. **Death:** A living cell with fewer than 2 or more than 3 living neighbors dies (underpopulation or overpopulation).
+3. **Birth:** A dead cell with exactly 3 living neighbors becomes alive.
 
-## React Compiler
+The Game of Life is famous for its ability to produce complex patterns and behaviors from these simple rules.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Implementation in This Project
 
-## Expanding the ESLint configuration
+This project implements Conway's Game of Life using React and TypeScript. The main features and implementation details include:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Interactive Grid:** The grid is rendered as a table of cells. Users can click cells to toggle their state (alive/dead).
+- **Simulation Logic:** The game logic is implemented in React components, updating the grid state according to Conway's rules on each tick.
+- **Adjustable Speed:** Users can control the speed of the simulation.
+- **Start/Stop & Reset:** Controls allow users to start, pause, and reset the simulation.
+- **Responsive UI:** The interface is styled for usability and clarity.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### How It Works
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. The grid is initialized with all cells dead or with a random pattern.
+2. When the simulation starts, the grid updates at a set interval, applying the Game of Life rules to each cell.
+3. Users can interact with the grid at any time, toggling cell states or adjusting simulation speed.
+4. The simulation can be paused or reset to experiment with different patterns.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Getting Started
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Features
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Interactive grid
+- Adjustable speed
+- Start/stop simulation
+- Reset grid
+
+## License
+
+This project is licensed under the MIT License.
